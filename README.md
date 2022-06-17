@@ -4,17 +4,17 @@ Some challenges based on list below. The idea is to practice some knowledge rece
 
 ## Challenges List
 
-- [] -  [Challenge01 - Node.js Concepts](https://github.com/rocketseat-education/bootcamp-gostack-desafio-01)
+- [ ] -  [Challenge01 - Node.js Concepts](https://github.com/rocketseat-education/bootcamp-gostack-desafio-01)
 
-- [] - [Challenge02 - FastFeet (1/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-02)
+- [ ] - [Challenge02 - FastFeet (1/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-02)
 
-- [] - [Challenge03 - FastFeet (2/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-03)
+- [ ] - [Challenge03 - FastFeet (2/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-03)
 
-- [] - [Challenge04 - React Introduction](https://github.com/rocketseat-education/bootcamp-gostack-desafio-04)
+- [ ] - [Challenge04 - React Introduction](https://github.com/rocketseat-education/bootcamp-gostack-desafio-04)
 
-- [] - [Challenge05 - First ReactJS Project](https://github.com/rocketseat-education/bootcamp-gostack-desafio-05)
+- [ ] - [Challenge05 - First ReactJS Project](https://github.com/rocketseat-education/bootcamp-gostack-desafio-05)
 
-- [] - [Challenge06 - FastFeet (3/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-09)
+- [ ] - [Challenge06 - FastFeet (3/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-09)
 
 
 
