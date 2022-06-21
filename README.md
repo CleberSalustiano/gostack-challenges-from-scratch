@@ -20,4 +20,5 @@ Some challenges based on list below. The idea is to practice some knowledge rece
 
 ## Challenges
 
+- [Challenge01](./challenges/challenge01)
 
