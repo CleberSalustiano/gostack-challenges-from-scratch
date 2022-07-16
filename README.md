@@ -4,9 +4,9 @@ Some challenges based on list below. The idea is to practice some knowledge rece
 
 ## Challenges List
 
-- [ x ] -  [Challenge01 - Node.js Concepts](https://github.com/rocketseat-education/bootcamp-gostack-desafio-01)
+- [x] -  [Challenge01 - Node.js Concepts](https://github.com/rocketseat-education/bootcamp-gostack-desafio-01)
 
-- [ ] - [Challenge02 - FastFeet (1/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-02)
+- [x] - [Challenge02 - FastFeet (1/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-02)
 
 - [ ] - [Challenge03 - FastFeet (2/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-03)
 

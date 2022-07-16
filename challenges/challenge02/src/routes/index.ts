@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import sumAllRequests from '../middlewares/sumAllRequests';
-import projectsRouter from './projects.routes';
+import sessionRouter from './session.routes';
+import usersRouter from './users.routes';
 
 const routes = Router();
 
-routes.use('/projects', sumAllRequests,projectsRouter);
+routes.use('/users', usersRouter);
+routes.use('/session', sessionRouter);
 
 export default routes;
