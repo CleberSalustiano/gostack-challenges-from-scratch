@@ -22,8 +22,6 @@ export default function ensureAuthenticated(
 
     const [, token] = authHeader.split(" ");
 
-    console.log(token)
-
     try {
         const decoded = verify(token, authConfig.jwt.secret);
 
@@ -32,9 +30,7 @@ export default function ensureAuthenticated(
         request.user = {
             id: sub,
         };
-
-        console.log(decoded);
-
+        
         return next();
     } catch {
         throw Error("Invalid Jwt token");
