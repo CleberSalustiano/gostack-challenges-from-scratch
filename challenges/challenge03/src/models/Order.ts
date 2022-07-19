@@ -1,11 +1,17 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from "typeorm";
 import Courier from "./Courier";
 import Recipient from "./Recipient";
-import Users from "./Users";
 
 @Entity("orders")
 class Order {
-
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
@@ -13,18 +19,20 @@ class Order {
     recipient_id: string;
 
     @ManyToOne(() => Recipient)
-    @JoinColumn({name: "recipient_id"})
+    @JoinColumn({ name: "recipient_id" })
     recipient: Recipient;
 
     @Column()
     courier_id: string;
 
     @ManyToOne(() => Courier)
-    @JoinColumn({name: "courier_id"})
+    @JoinColumn({ name: "courier_id" })
     courier: Courier;
 
+    @Column()
     signature_id: string;
 
+    @Column()
     product: string;
 
     @CreateDateColumn()
@@ -32,7 +40,7 @@ class Order {
 
     @CreateDateColumn()
     start_date: Date;
-    
+
     @CreateDateColumn()
     end_date: Date;
 
@@ -42,3 +50,5 @@ class Order {
     @UpdateDateColumn()
     update_at: Date;
 }
+
+export default Order;

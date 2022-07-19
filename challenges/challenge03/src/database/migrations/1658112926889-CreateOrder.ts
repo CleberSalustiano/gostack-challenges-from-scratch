@@ -23,6 +23,7 @@ export class CreateOrder1658112926889 implements MigrationInterface {
                     {
                         name: "signature_id",
                         type: "varchar",
+                        isNullable: true
                     },
                     {
                         name: "product",
@@ -31,14 +32,17 @@ export class CreateOrder1658112926889 implements MigrationInterface {
                     {
                         name: "canceled_at",
                         type: "timestamp",
+                        isNullable: true
                     },
                     {
                         name: "start_date",
                         type: "timestamp",
+                        isNullable: true
                     },
                     {
                         name: "end_date",
                         type: "timestamp",
+                        isNullable: true
                     },
                     {
                         name: "created_at",

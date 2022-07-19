@@ -8,7 +8,7 @@ Some challenges based on list below. The idea is to practice some knowledge rece
 
 - [x] - [Challenge02 - FastFeet (1/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-02)
 
-- [ ] - [Challenge03 - FastFeet (2/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-03)
+- [x] - [Challenge03 - FastFeet (2/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-03)
 
 - [ ] - [Challenge04 - React Introduction](https://github.com/rocketseat-education/bootcamp-gostack-desafio-04)
 
