@@ -12,7 +12,8 @@ const Container = styled.header`
         display: flex;
         align-items: center;
         color: white;
-        font: 16px Roboto, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
         img {
             height: 32px;
             margin-left: 5px;;
