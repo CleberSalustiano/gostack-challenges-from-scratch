@@ -10,11 +10,9 @@ Some challenges based on list below. The idea is to practice some knowledge rece
 
 - [x] - [Challenge03 - FastFeet (2/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-03)
 
-- [ ] - [Challenge04 - React Introduction](https://github.com/rocketseat-education/bootcamp-gostack-desafio-04)
+- [x] - [Challenge04 - React Introduction](https://github.com/rocketseat-education/bootcamp-gostack-desafio-04)
 
-- [ ] - [Challenge05 - First ReactJS Project](https://github.com/rocketseat-education/bootcamp-gostack-desafio-05)
-
-- [ ] - [Challenge06 - FastFeet (3/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-09)
+- [ ] - [Challenge05 - FastFeet (3/4)](https://github.com/rocketseat-education/bootcamp-gostack-desafio-09)
 
 
 
@@ -25,4 +23,6 @@ Some challenges based on list below. The idea is to practice some knowledge rece
 - [Challenge02](./challenges/challenge02)
 
 - [Challenge03](./challenges/challenge03)
+
+- [Challenge03](./challenges/challenge04)
 
