@@ -5,7 +5,7 @@ import OrderPage from '../pages/OrderPage';
 
 const ApplicationRoutes: React.FC = () => (
   <Routes>
-    <Route path="/" element={<OrderPage />} />
+    <Route path="/orders" element={<OrderPage />} />
   </Routes>
 );
 

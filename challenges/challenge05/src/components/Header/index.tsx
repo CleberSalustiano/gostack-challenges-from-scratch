@@ -2,7 +2,11 @@ import React from 'react';
 import { Container, Navigation } from './style';
 import fastFeetLogo from '../../assets/fastfeet-logo.png';
 
-const Header: React.FC = () => {
+interface HeaderProp {
+    bold: 'orders' | 'couriers' | 'recipients' | 'problems';
+}
+
+const Header: React.FC<HeaderProp> = ({ bold }) => {
     return (
         <Container>
             <div>
@@ -10,16 +14,40 @@ const Header: React.FC = () => {
                 <Navigation>
                     <ul>
                         <li>
-                            <a href="/orders">ENCOMENDAS</a>
+                            {bold === 'orders' ? (
+                                <a href="/orders" className="bold">
+                                    ENCOMENDAS
+                                </a>
+                            ) : (
+                                <a href="/orders">ENCOMENDAS</a>
+                            )}
                         </li>
                         <li>
-                            <a href="/couries">ENTREGADORES</a>
+                            {bold === 'couriers' ? (
+                                <a href="/couriers" className="bold">
+                                    ENTREGADORES
+                                </a>
+                            ) : (
+                                <a href="/couriers">ENTREGADORES</a>
+                            )}
                         </li>
                         <li>
-                            <a href="/recipents">DESTINATÁRIOS</a>
+                            {bold === 'recipients' ? (
+                                <a href="/recipients" className="bold">
+                                    DESTINATÁRIOS
+                                </a>
+                            ) : (
+                                <a href="/recipients">DESTINATÁRIOS</a>
+                            )}
                         </li>
                         <li>
-                            <a href="/problems">PROBLEMAS</a>
+                            {bold === 'problems' ? (
+                                <a href="/problems" className="bold">
+                                    PROBLEMAS
+                                </a>
+                            ) : (
+                                <a href="/problems">PROBLEMAS</a>
+                            )}
                         </li>
                     </ul>
                 </Navigation>

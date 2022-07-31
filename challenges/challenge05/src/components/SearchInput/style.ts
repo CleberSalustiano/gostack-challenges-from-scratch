@@ -1,0 +1,18 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+    display: flex;
+    padding: 10px;
+    background-color: white;
+    width: 250px;
+
+    svg {
+        color: #888;
+    }
+
+    input {
+        margin-left: 10px;
+        border: 0;
+        color: #555
+    }
+`
