@@ -5,6 +5,8 @@ export const Container = styled.div`
     padding: 10px;
     background-color: white;
     width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 
     svg {
         color: #888;

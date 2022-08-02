@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 import SearchInput from '../../components/SearchInput';
+import Status from '../../components/Status';
 import { Container, Main, Table } from './style';
 
 const OrderPage: React.FC = () => {
@@ -37,7 +38,20 @@ const OrderPage: React.FC = () => {
                         <td>John Doe</td>
                         <td>Rio do Sul</td>
                         <td>Santa Catarina</td>
-                        <td>Entregue</td>
+                        <td>
+                            <Status status="ENTREGUE" />
+                        </td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td>#02</td>
+                        <td>Ludwig van Beethoven</td>
+                        <td>John Doe</td>
+                        <td>Rio do Sul</td>
+                        <td>Santa Catarina</td>
+                        <td>
+                            <Status status="ENTREGUE" />
+                        </td>
                         <td>...</td>
                     </tr>
                 </Table>

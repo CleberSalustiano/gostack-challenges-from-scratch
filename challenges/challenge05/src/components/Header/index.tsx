@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Navigation } from './style';
 import fastFeetLogo from '../../assets/fastfeet-logo.png';
+import { Link } from 'react-router-dom';
 
 interface HeaderProp {
     bold: 'orders' | 'couriers' | 'recipients' | 'problems';
@@ -15,38 +16,38 @@ const Header: React.FC<HeaderProp> = ({ bold }) => {
                     <ul>
                         <li>
                             {bold === 'orders' ? (
-                                <a href="/orders" className="bold">
+                                <Link to="/orders" className="bold">
                                     ENCOMENDAS
-                                </a>
+                                </Link>
                             ) : (
-                                <a href="/orders">ENCOMENDAS</a>
+                                <Link to="/orders">ENCOMENDAS</Link>
                             )}
                         </li>
                         <li>
                             {bold === 'couriers' ? (
-                                <a href="/couriers" className="bold">
+                                <Link to="/couriers" className="bold">
                                     ENTREGADORES
-                                </a>
+                                </Link>
                             ) : (
-                                <a href="/couriers">ENTREGADORES</a>
+                                <Link to="/couriers">ENTREGADORES</Link>
                             )}
                         </li>
                         <li>
                             {bold === 'recipients' ? (
-                                <a href="/recipients" className="bold">
+                                <Link to="/recipients" className="bold">
                                     DESTINATÁRIOS
-                                </a>
+                                </Link>
                             ) : (
-                                <a href="/recipients">DESTINATÁRIOS</a>
+                                <Link to="/recipients">DESTINATÁRIOS</Link>
                             )}
                         </li>
                         <li>
                             {bold === 'problems' ? (
-                                <a href="/problems" className="bold">
+                                <Link to="/problems" className="bold">
                                     PROBLEMAS
-                                </a>
+                                </Link>
                             ) : (
-                                <a href="/problems">PROBLEMAS</a>
+                                <Link to="/problems">PROBLEMAS</Link>
                             )}
                         </li>
                     </ul>

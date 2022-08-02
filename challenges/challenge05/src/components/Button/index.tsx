@@ -9,8 +9,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 const Button : React.FC<ButtonProps> = ({pageRef, children}) => {
     return (
         <Container>
-            <FiPlus />
             <a href={pageRef}>
+                <FiPlus />
                 {children}
             </a>
         </Container>
