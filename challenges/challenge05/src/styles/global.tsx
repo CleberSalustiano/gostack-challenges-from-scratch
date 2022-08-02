@@ -24,4 +24,18 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+
+  .edit {
+        color: #4d85ee;
+    }
+
+    .remove {
+        color: #de3b3b;
+    }
+
+    .view {
+        color: #7d40e7;
+    }
+
 `;

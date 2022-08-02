@@ -1,10 +1,10 @@
-import React from 'react';
-import { Container, Navigation } from './style';
-import fastFeetLogo from '../../assets/fastfeet-logo.png';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Container, Navigation } from "./style";
+import fastFeetLogo from "../../assets/fastfeet-logo.png";
+import { Link } from "react-router-dom";
 
 interface HeaderProp {
-    bold: 'orders' | 'couriers' | 'recipients' | 'problems';
+    bold: "orders" | "couriers" | "recipients" | "problems";
 }
 
 const Header: React.FC<HeaderProp> = ({ bold }) => {
@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProp> = ({ bold }) => {
                 <Navigation>
                     <ul>
                         <li>
-                            {bold === 'orders' ? (
+                            {bold === "orders" ? (
                                 <Link to="/orders" className="bold">
                                     ENCOMENDAS
                                 </Link>
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProp> = ({ bold }) => {
                             )}
                         </li>
                         <li>
-                            {bold === 'couriers' ? (
+                            {bold === "couriers" ? (
                                 <Link to="/couriers" className="bold">
                                     ENTREGADORES
                                 </Link>
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProp> = ({ bold }) => {
                             )}
                         </li>
                         <li>
-                            {bold === 'recipients' ? (
+                            {bold === "recipients" ? (
                                 <Link to="/recipients" className="bold">
                                     DESTINATÁRIOS
                                 </Link>
@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProp> = ({ bold }) => {
                             )}
                         </li>
                         <li>
-                            {bold === 'problems' ? (
+                            {bold === "problems" ? (
                                 <Link to="/problems" className="bold">
                                     PROBLEMAS
                                 </Link>

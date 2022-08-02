@@ -1,20 +1,21 @@
 import React, { ButtonHTMLAttributes } from "react";
-import {FiPlus} from "react-icons/fi"
+import { FiPlus } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import { Container } from "./style";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     pageRef: string;
 }
 
-const Button : React.FC<ButtonProps> = ({pageRef, children}) => {
+const Button: React.FC<ButtonProps> = ({ pageRef, children }) => {
     return (
         <Container>
-            <a href={pageRef}>
+            <Link to={pageRef}>
                 <FiPlus />
                 {children}
-            </a>
+            </Link>
         </Container>
-    )
-}
+    );
+};
 
 export default Button;

@@ -1,13 +1,16 @@
-import React, { InputHTMLAttributes } from 'react';
-import { Container } from './style';
-import {FiSearch} from "react-icons/fi"
+import React, { InputHTMLAttributes } from "react";
+import { Container } from "./style";
+import { FiSearch } from "react-icons/fi";
 
 interface SearchInputProps {
     name: string;
     placeHolder: string;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ name, placeHolder: placeHold}) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+    name,
+    placeHolder: placeHold,
+}) => {
     return (
         <Container>
             <FiSearch />

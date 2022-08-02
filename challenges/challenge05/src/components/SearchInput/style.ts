@@ -15,6 +15,6 @@ export const Container = styled.div`
     input {
         margin-left: 10px;
         border: 0;
-        color: #555
+        color: #555;
     }
-`
+`;

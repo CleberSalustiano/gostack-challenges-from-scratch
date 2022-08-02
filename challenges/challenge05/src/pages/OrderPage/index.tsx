@@ -1,11 +1,19 @@
-import React from 'react';
-import Button from '../../components/Button';
-import Header from '../../components/Header';
-import SearchInput from '../../components/SearchInput';
-import Status from '../../components/Status';
-import { Container, Main, Table } from './style';
+import React, { useCallback, useState } from "react";
+import Action from "../../components/Action";
+import Button from "../../components/Button";
+import Header from "../../components/Header";
+import SearchInput from "../../components/SearchInput";
+import Status from "../../components/Status";
+import { Container, Main, Table } from "./style";
+import { FiEdit2, FiEye, FiTrash2 } from "react-icons/fi";
 
 const OrderPage: React.FC = () => {
+    const [actionOpen, setActionOpen] = useState(false);
+
+    const handleOpen = useCallback(() => {
+        setActionOpen(!actionOpen);
+    }, [actionOpen]);
+
     return (
         <>
             <Header bold="orders" />
@@ -41,7 +49,18 @@ const OrderPage: React.FC = () => {
                         <td>
                             <Status status="ENTREGUE" />
                         </td>
-                        <td>...</td>
+                        <td>
+                            <Action
+                                isOpen={actionOpen}
+                                onClick={handleOpen}
+                                setIsOpen={handleOpen}
+                            >
+                                {/* Alterar essa parte depois */}
+                                <div><FiEye className="view"/> Visualizar</div>
+                                <div><FiEdit2  className="edit"/> Editar</div>
+                                <div><FiTrash2 className="remove"/> Excluir</div>
+                            </Action>
+                        </td>
                     </tr>
                     <tr>
                         <td>#02</td>
@@ -50,7 +69,7 @@ const OrderPage: React.FC = () => {
                         <td>Rio do Sul</td>
                         <td>Santa Catarina</td>
                         <td>
-                            <Status status="ENTREGUE" />
+                            <Status status="PENDENTE" />
                         </td>
                         <td>...</td>
                     </tr>
