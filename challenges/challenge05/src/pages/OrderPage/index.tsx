@@ -4,75 +4,78 @@ import Button from "../../components/Button";
 import Header from "../../components/Header";
 import SearchInput from "../../components/SearchInput";
 import Status from "../../components/Status";
-import { Container, Main, Table } from "./style";
-import { FiEdit2, FiEye, FiTrash2 } from "react-icons/fi";
+import { MainHeader, Main, Table, Tbody } from "./style";
+import ProfileImage from "../../components/ProfileImage";
 
 const OrderPage: React.FC = () => {
-    const [actionOpen, setActionOpen] = useState(false);
-
-    const handleOpen = useCallback(() => {
-        setActionOpen(!actionOpen);
-    }, [actionOpen]);
+    
 
     return (
         <>
             <Header bold="orders" />
-
             <Main>
-                <Container>
+                <MainHeader>
                     <div>
                         <h2>Gerenciando encomendas</h2>
                         <SearchInput
-                            name="inputEncomendas"
+                            name="inputOrder"
                             placeHolder="Buscar por encomendas"
                         />
                     </div>
 
-                    <Button pageRef="/orders/register">CADASTRAR</Button>
-                </Container>
+                    <Button pageRef="/orders/register" withPlus={true}>CADASTRAR</Button>
+                </MainHeader>
                 <Table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Destinatário</th>
-                        <th>Entregador</th>
-                        <th>Cidade</th>
-                        <th>Estado</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                    <tr>
-                        <td>#01</td>
-                        <td>Ludwig van Beethoven</td>
-                        <td>John Doe</td>
-                        <td>Rio do Sul</td>
-                        <td>Santa Catarina</td>
-                        <td>
-                            <Status status="ENTREGUE" />
-                        </td>
-                        <td>
-                            <Action
-                                isOpen={actionOpen}
-                                onClick={handleOpen}
-                                setIsOpen={handleOpen}
-                            >
-                                {/* Alterar essa parte depois */}
-                                <div><FiEye className="view"/> Visualizar</div>
-                                <div><FiEdit2  className="edit"/> Editar</div>
-                                <div><FiTrash2 className="remove"/> Excluir</div>
-                            </Action>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#02</td>
-                        <td>Ludwig van Beethoven</td>
-                        <td>John Doe</td>
-                        <td>Rio do Sul</td>
-                        <td>Santa Catarina</td>
-                        <td>
-                            <Status status="PENDENTE" />
-                        </td>
-                        <td>...</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Destinatário</th>
+                            <th>Entregador</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <Tbody>
+                        <tr>
+                            <td>#01</td>
+                            <td>Ludwig van Beethoven</td>
+                            <td>
+                                <ProfileImage />
+                                John Doe
+                            </td>
+                            <td>Rio do Sul</td>
+                            <td>Santa Catarina</td>
+                            <td>
+                                <Status status="ENTREGUE" />
+                            </td>
+                            <td>
+                                <Action
+                                    typeAction="orders"
+                                ></Action>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#02</td>
+                            <td>Ludwig van Beethoven</td>
+                            <td>
+                                <ProfileImage />
+                                John Doe
+                            </td>
+                            <td>Rio do Sul</td>
+                            <td>Santa Catarina</td>
+                            <td>
+                                <Status status="PENDENTE" />
+                            </td>
+                            <td>
+                                <Action
+                                    typeAction="orders"
+                                ></Action>
+                            </td>
+                        </tr>
+                    </Tbody>
                 </Table>
             </Main>
         </>

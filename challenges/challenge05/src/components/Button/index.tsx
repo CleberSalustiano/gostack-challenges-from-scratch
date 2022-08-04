@@ -5,13 +5,14 @@ import { Container } from "./style";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     pageRef: string;
+    withPlus?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ pageRef, children }) => {
+const Button: React.FC<ButtonProps> = ({ pageRef, children, withPlus }) => {
     return (
         <Container>
             <Link to={pageRef}>
-                <FiPlus />
+                {withPlus && <FiPlus />}
                 {children}
             </Link>
         </Container>

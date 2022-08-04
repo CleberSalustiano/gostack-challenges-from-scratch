@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Tbody = styled.tbody`
+    td:nth-child(3) {
+        display: flex;
+        align-items: center;
+    }
+`
+
+export const MainHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -14,9 +21,10 @@ export const Container = styled.div`
     }
 `;
 
-export const Main = styled.main`
+export const Main = styled.div`
     margin-left: 6%;
     width: 88%;
+    
 `;
 
 export const Table = styled.table`
@@ -27,19 +35,29 @@ export const Table = styled.table`
     border-spacing: 0 20px;
     color: #777;
 
-    tr td {
+    td {
         background-color: white;
-        padding: 20px 0;
+        padding: 12px 0;
     }
 
-    tr td:first-child,
-    tr th:first-child {
+    th {
+        color: #444;
+    }
+
+    td:first-child,
+    th:first-child {
         padding-left: 20px;
     }
 
-    tr td:last-child,
-    tr th:last-child {
+    td:last-child,
+    th:last-child {
         padding-left: 50px;
-        text-align: center;
+        text-align: right;
+        padding-right: 10px;
     }
+
+    td:last-child{
+        padding-right: 25px;
+    }
+
 `;

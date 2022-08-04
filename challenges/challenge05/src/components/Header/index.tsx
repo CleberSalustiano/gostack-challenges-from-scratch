@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProp> = ({ bold }) => {
             </div>
             <div>
                 <h1>Admin FastFeet</h1>
-                <a href="/sair">sair do sistema</a>
+                <Link to="/">sair do sistema</Link>
             </div>
         </Container>
     );

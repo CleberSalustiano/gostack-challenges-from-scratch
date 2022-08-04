@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React from "react";
 import { Container } from "./style";
 import { FiSearch } from "react-icons/fi";
 
