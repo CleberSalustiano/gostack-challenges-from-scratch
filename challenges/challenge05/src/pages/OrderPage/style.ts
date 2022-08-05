@@ -40,6 +40,10 @@ export const Table = styled.table`
         padding: 12px 0;
     }
 
+    td, th {
+        padding-right: 10px;
+    }
+
     th {
         color: #444;
     }

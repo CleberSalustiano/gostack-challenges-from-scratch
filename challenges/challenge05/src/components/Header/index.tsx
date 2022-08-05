@@ -2,12 +2,15 @@ import React from "react";
 import { Container, Navigation } from "./style";
 import fastFeetLogo from "../../assets/fastfeet-logo.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hook/AuthContext";
 
 interface HeaderProp {
     bold: "orders" | "couriers" | "recipients" | "problems";
 }
 
 const Header: React.FC<HeaderProp> = ({ bold }) => {
+    const {signOut} = useAuth();
+
     return (
         <Container>
             <div>
@@ -55,7 +58,7 @@ const Header: React.FC<HeaderProp> = ({ bold }) => {
             </div>
             <div>
                 <h1>Admin FastFeet</h1>
-                <Link to="/">sair do sistema</Link>
+                <Link to="/" onClick={signOut}>sair do sistema</Link>
             </div>
         </Container>
     );

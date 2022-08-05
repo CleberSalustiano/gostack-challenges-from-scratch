@@ -6,7 +6,7 @@ export const Container = styled.div`
     background-color: #7d40e7;
     align-items: center;
     justify-content: center;
-    & > div {
+    & > Form {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -23,11 +23,24 @@ export const Container = styled.div`
         border-radius: 5px;
     }
 
-    & > div {
-        div a {
-            width: 363px;
+    button {
+        border: none;
+        align-items: center;
+        justify-content: center;
+        background-color: #7d40e7;
+        width: 363px;
             height: 40px;
-        }
+        text-decoration: none;
+        color: white;
+        font-weight: 700;
+        font-size: 14px;
+        display: flex;
+        border-radius: 5px;
+    }
+
+    p {
+        margin-bottom: 20px;
+        color: #de3b3b;
     }
 
 `
