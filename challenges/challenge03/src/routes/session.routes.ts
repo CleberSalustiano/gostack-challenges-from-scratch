@@ -4,7 +4,7 @@ import AuthenticateUserService from "../services/AuthenticateUserService";
 
 const sessionRouter = Router();
 
-sessionRouter.get("/", async (request, response) => {
+sessionRouter.post("/", async (request, response) => {
     try {
         const { email, password } = request.body;
 
@@ -20,7 +20,7 @@ sessionRouter.get("/", async (request, response) => {
         return response.json({ user, token });
     } catch (error) {
         if (error instanceof Error) {
-            return response.json({ error: error.message }).status(400);
+            return response.status(400).json({ error: error.message })
         }
     }
 });
