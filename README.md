@@ -26,3 +26,5 @@ Some challenges based on list below. The idea is to practice some knowledge rece
 
 - [Challenge04](./challenges/challenge04)
 
+- [Challenge05](./challenges/challenge05)
+
