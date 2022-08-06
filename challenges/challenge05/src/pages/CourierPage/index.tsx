@@ -1,13 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Action from "../../components/Action";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import ProfileImage from "../../components/ProfileImage";
 import SearchInput from "../../components/SearchInput";
+import api from "../../service/api";
 import { MainHeader, Main, Table } from "../OrderPage/style";
 import { Container } from "./style";
 
+interface CourierProp{
+    id: string;
+    avatar_id: string;
+    name: string;
+    email: string;
+}
+
 const CourierPage: React.FC = () => {
+    const [couriers, setCouriers] = useState<CourierProp[]>();
+
+
+    const token = localStorage.getItem("FastFeet:token");
+    useEffect(() => {
+        const loadCouriers = async () => {
+            const { data } = await api.get("/couriers", {
+                headers: {
+                    authorization: token as string,
+                },
+            });
+            setCouriers(data);
+        };
+
+        loadCouriers();
+    }, [token]);
+
+
     return (
         <>
             <Container>
@@ -35,39 +61,26 @@ const CourierPage: React.FC = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>#01</td>
-                                <td>
-                                    <ProfileImage />
-                                </td>
-                                <td>John Doe</td>
-                                <td>example@rocketseat.com</td>
-                                <td>
-                                    <Action typeAction="couriers" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#01</td>
-                                <td>
-                                    <ProfileImage />
-                                </td>
-                                <td>John Doe</td>
-                                <td>example@rocketseat.com</td>
-                                <td>
-                                    <Action typeAction="couriers" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#01</td>
-                                <td>
-                                    <ProfileImage />
-                                </td>
-                                <td>John Doe</td>
-                                <td>example@rocketseat.com</td>
-                                <td>
-                                    <Action typeAction="couriers" />
-                                </td>
-                            </tr>
+                            {couriers &&
+                            couriers.map((courier) => {
+                                return (
+                                    <tr key={courier.id}>
+                                        <td>{courier.id}</td>
+                                        <td>
+                                            {courier.avatar_id && (
+                                                <>{courier.avatar_id}</>
+                                            )}
+                                            {courier.avatar_id ==
+                                                null && <ProfileImage />}
+                                        </td>
+                                        <td>{courier.name}</td>
+                                        <td>{courier.email}</td>
+                                        <td>
+                                            <Action typeAction="orders"></Action>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </Table>
                 </Main>

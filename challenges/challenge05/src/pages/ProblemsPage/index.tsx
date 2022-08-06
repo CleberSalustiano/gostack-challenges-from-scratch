@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Action from "../../components/Action";
 import Header from "../../components/Header";
+import api from "../../service/api";
 import { Main, MainHeader, Table } from "../OrderPage/style";
 
+interface ProblemsProp {
+
+}
+
 const ProblemsPage: React.FC = () => {
+    const [problems, setProblems] = useState<ProblemsProp[]>();
+
+
+    const token = localStorage.getItem("FastFeet:token");
+    useEffect(() => {
+        const loadProblems = async () => {
+            const { data } = await api.get("/delivery", {
+                headers: {
+                    authorization: token as string,
+                },
+            });
+            setProblems(data);
+        };
+
+        loadProblems();
+    }, [token]);
+
+    console.log(problems)
+
     return (
         <>
             <Header bold="problems" />

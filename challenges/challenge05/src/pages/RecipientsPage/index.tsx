@@ -1,11 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Action from "../../components/Action";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import SearchInput from "../../components/SearchInput";
+import api from "../../service/api";
 import { Main, MainHeader, Table } from "../OrderPage/style";
 
+interface RecipientProp {
+    id: string;
+    city: string;
+    state: string;
+    street: string;
+    number: string;
+    name: string;
+}
+
 const RecipientsPage: React.FC = () => {
+
+    const [recipients, setRecipients] = useState<RecipientProp[]>();
+
+
+    const token = localStorage.getItem("FastFeet:token");
+    useEffect(() => {
+        const loadRecipients = async () => {
+            const { data } = await api.get("/recipients", {
+                headers: {
+                    authorization: token as string,
+                },
+            });
+            setRecipients(data);
+        };
+
+        loadRecipients();
+    }, [token]);
+
     return (
         <>
             <Header bold="recipients" />
@@ -31,30 +59,19 @@ const RecipientsPage: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#01</td>
-                            <td>Ludwig Van Beethonven</td>
-                            <td>Rua Beethonven, 1992, Diadema - Bahia</td>
-                            <td><Action typeAction="recipients" /></td>
-                        </tr>
-                        <tr>
-                            <td>#01</td>
-                            <td>Ludwig Van Beethonven</td>
-                            <td>Rua Beethonven, 1992, Diadema - Bahia</td>
-                            <td><Action typeAction="recipients" /></td>
-                        </tr>
-                        <tr>
-                            <td>#01</td>
-                            <td>Ludwig Van Beethonven</td>
-                            <td>Rua Beethonven, 1992, Diadema - Bahia</td>
-                            <td><Action typeAction="recipients" /></td>
-                        </tr>
-                        <tr>
-                            <td>#01</td>
-                            <td>Ludwig Van Beethonven</td>
-                            <td>Rua Beethonven, 1992, Diadema - Bahia</td>
-                            <td><Action typeAction="recipients" /></td>
-                        </tr>
+                        {recipients &&
+                            recipients.map((recipient) => {
+                                return (
+                                    <tr key={recipient.id}>
+                                        <td>{recipient.id}</td>
+                                        <td>{recipient.name}</td>
+                                        <td>{recipient.street + ", " +  recipient.number +", " + recipient.city + " - " + recipient.state }</td>
+                                        <td>
+                                            <Action typeAction="orders"></Action>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                     </tbody>
                 </Table>
             </Main>

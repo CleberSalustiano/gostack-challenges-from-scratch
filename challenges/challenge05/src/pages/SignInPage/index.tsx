@@ -38,8 +38,6 @@ const SignInPage: React.FC = () => {
         [signIn, navigate],
     );
 
-    console.log(error)
-
     if (user != null) {
         return <Navigate to="/orders" />
     }

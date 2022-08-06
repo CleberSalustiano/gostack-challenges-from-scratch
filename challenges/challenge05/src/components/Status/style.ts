@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components";
-import { StatusProps } from ".";
+
+interface StatusProps {
+    status: "PENDENTE" | "ENTREGUE" | "RETIRADA" | "CANCELADA";
+}
 
 export const Container = styled.div<StatusProps>`
     padding: 2px;
