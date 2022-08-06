@@ -3,15 +3,22 @@ import { getRepository } from "typeorm";
 import ensureAuthenticated from "../middlewares/ensureAuthenticated";
 import Order from "../models/Order";
 import CreateOrderService from "../services/CreateOrderService";
+import GetAllOrdersService from "../services/GetAllOrdersService";
 import UpdateOrderService from "../services/UpdateOrderService";
 
 const orderRouter = Router();
 
 orderRouter.get("/", ensureAuthenticated, async (request, response) => {
-    const orderRepository = getRepository(Order);
-    const orders = await orderRepository.find();
+    try {
+        const getAllOrders = new GetAllOrdersService;
+        const orders = await getAllOrders.execute();
 
-    return response.json(orders);
+        return response.json(orders);
+    } catch (error) {
+        if (error instanceof Error) {
+            return response.status(400).json({ error: error.message });
+        }
+    }
 });
 
 orderRouter.post("/", ensureAuthenticated, async (request, response) => {
@@ -29,7 +36,7 @@ orderRouter.post("/", ensureAuthenticated, async (request, response) => {
         return response.json(order);
     } catch (error) {
         if (error instanceof Error) {
-            return response.json({ error: error.message }).status(400);
+            return response.status(400).json({ error: error.message });
         }
     }
 });
@@ -51,7 +58,7 @@ orderRouter.delete("/:id", ensureAuthenticated, async (request, response) => {
         return response.json().status(204);
     } catch (error) {
         if (error instanceof Error) {
-            return response.json({ error: error.message }).status(400);
+            return response.status(400).json({ error: error.message });
         }
     }
 });
@@ -72,7 +79,7 @@ orderRouter.put("/:id", ensureAuthenticated, async (request, response) => {
         return response.json(order);
     } catch (error) {
         if (error instanceof Error) {
-            return response.json({ error: error.message }).status(400);
+            return response.status(400).json({ error: error.message });
         }
     }
 });

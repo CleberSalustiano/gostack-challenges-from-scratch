@@ -14,13 +14,14 @@ export default function ensureAuthenticated(
     response: Response,
     next: NextFunction
 ): void {
-    const authHeader = request.headers.authorization;
+    const token = request.headers.authorization;
 
-    if (!authHeader) {
-        throw Error("JWT token is missing");
+    if (!token) {
+        response.status(403).json({error: "JWT token is missing"})
+        return
     }
 
-    const [, token] = authHeader.split(" ");
+    // const [, token] = authHeader.split(" ");
 
     try {
         const decoded = verify(token, authConfig.jwt.secret);
@@ -30,9 +31,9 @@ export default function ensureAuthenticated(
         request.user = {
             id: sub,
         };
-        
         return next();
     } catch {
-        throw Error("Invalid Jwt token");
+        response.status(403).json({error: "JWT token is missing"})
+        return
     }
 }

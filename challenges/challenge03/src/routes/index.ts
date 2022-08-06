@@ -15,6 +15,6 @@ routes.use("/couriers", courierRouter);
 routes.use("/recipients", recipientRouter);
 routes.use("/orders", orderRouter);
 routes.use("/delivery", deliveryRouter);
-routes.use("/problem", problemRouter);
+routes.use("/problems", problemRouter);
 
 export default routes;
