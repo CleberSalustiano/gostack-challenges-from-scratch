@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+interface ButtonProps {
+    voltar ?: boolean;
+}
+
+export const Container = styled.div<ButtonProps>`
     svg {
         color: white;
         margin-right: 5px;
@@ -18,5 +22,12 @@ export const Container = styled.div`
         font-size: 14px;
         display: flex;
         border-radius: 5px;
+        ${(props) =>
+        props.voltar === true &&
+        css`
+            background-color: #ccc;
+        `}
     }
+
+    
 `;

@@ -48,7 +48,7 @@ const CourierPage: React.FC = () => {
                             />
                         </div>
 
-                        <Button pageRef="/courier/register" withPlus={true}>CADASTRAR</Button>
+                        <Button pageRef="/couriers/register" withPlus={true}>CADASTRAR</Button>
                     </MainHeader>
                     <Table>
                         <thead>

@@ -5,7 +5,9 @@ import api from "../../service/api";
 import { Main, MainHeader, Table } from "../OrderPage/style";
 
 interface ProblemsProp {
-
+    id: string;
+    delivery_id: string;
+    description: string;
 }
 
 const ProblemsPage: React.FC = () => {
@@ -26,8 +28,6 @@ const ProblemsPage: React.FC = () => {
         loadProblems();
     }, [token]);
 
-    console.log(problems)
-
     return (
         <>
             <Header bold="problems" />
@@ -46,39 +46,16 @@ const ProblemsPage: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#01</td>
-                            <td>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Voluptatibus consequatur cum,
-                                quia dolorem unde doloribus consectetur
-                            </td>
-                            <td>
-                                <Action typeAction="problems" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>#01</td>
-                            <td>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Voluptatibus consequatur cum,
-                                quia dolorem unde doloribus consectetur
-                            </td>
-                            <td>
-                                <Action typeAction="problems" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>#01</td>
-                            <td>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Voluptatibus consequatur cum,
-                                quia dolorem unde doloribus consectetur
-                            </td>
-                            <td>
-                                <Action typeAction="problems" />
-                            </td>
-                        </tr>
+                        {problems && problems.map(problem => (
+                            <tr id={problem.id}>
+                                <td>{problem.delivery_id}</td>
+                                <td>{problem.description}</td>
+                                <td>
+                                    <Action typeAction="problems" />
+                                </td>
+                            </tr>
+                        ))}
+
                     </tbody>
                 </Table>
             </Main>

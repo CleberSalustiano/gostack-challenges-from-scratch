@@ -3,6 +3,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import CourierPage from "../pages/CourierPage";
 import OrderPage from "../pages/OrderPage";
+import OrderPageRegister from "../pages/OrderPageRegister";
 import ProblemsPage from "../pages/ProblemsPage";
 import RecipientsPage from "../pages/RecipientsPage";
 import SignInPage from "../pages/SignInPage";
@@ -16,6 +17,14 @@ const ApplicationRoutes: React.FC = () => (
             element={
                 <ProtectedRoute>
                     <OrderPage />
+                </ProtectedRoute>
+            }
+        />
+        <Route
+            path="/orders/register"
+            element={
+                <ProtectedRoute>
+                    <OrderPageRegister />
                 </ProtectedRoute>
             }
         />

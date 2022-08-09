@@ -37,5 +37,4 @@ export default createGlobalStyle`
     .view {
         color: #7d40e7;
     }
-
 `;
