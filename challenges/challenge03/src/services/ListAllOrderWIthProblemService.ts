@@ -9,16 +9,17 @@ class ListAllOrderWIthProblemService {
         const deliveryProblemsRepository = getRepository(DeliveryProblem);
 
         const orders = await orderRepository.find();
-        const ordersWithProblems = new Array<Order>;
+        const deliveriesProblems = new Array<DeliveryProblem>;
         
         for (let order of orders) {
             const problem = await deliveryProblemsRepository.findOne({where: {delivery_id: order.id}})
             if (problem){
-                ordersWithProblems.push(order);
+                problem.delivery = order;
+                deliveriesProblems.push(problem);
             }   
         }   
 
-        return ordersWithProblems;
+        return deliveriesProblems;
     }
 }
 
