@@ -1,23 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    margin-bottom: 15px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-
-    input {
+    select {
         text-decoration: none;
         border: none;
         width: 100%;
-    }
-
-    input::placeholder{
+        background-color: white;
         color: #777;
-    }
-
-    div {
-        border: 1px solid #aaa;
-        padding: 10px 50px 10px 10px;
-        border-radius: 5px;
     }
 
     strong {
@@ -26,5 +19,10 @@ export const Container = styled.div`
         margin-bottom: 10px;
     }
 
-    margin-bottom: 20px;
+    div {
+        border: 1px solid #aaa;
+        padding: 10px 10px 10px 10px;
+        border-radius: 5px;
+
+    }
 `

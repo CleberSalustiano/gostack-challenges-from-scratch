@@ -28,7 +28,7 @@ export const Container = styled.div`
         align-items: center;
         justify-content: center;
         background-color: #7d40e7;
-        width: 363px;
+        width: 360px;
             height: 40px;
         text-decoration: none;
         color: white;
@@ -41,6 +41,10 @@ export const Container = styled.div`
     p {
         margin-bottom: 20px;
         color: #de3b3b;
+    }
+
+    Form > div {
+        width: 360px;
     }
 
 `
