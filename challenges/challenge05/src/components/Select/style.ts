@@ -11,6 +11,7 @@ export const Container = styled.div`
         width: 100%;
         background-color: white;
         color: #777;
+        font-size: 14px;
     }
 
     strong {

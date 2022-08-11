@@ -13,9 +13,11 @@ export const Menu = styled.div<MenuProps>`
     border-radius: 5px;
     visibility: hidden;
 
-    ${(props) => props.isOpen === true && css`
-        visibility: visible;
-    `}
+    ${(props) =>
+        props.isOpen === true &&
+        css`
+            visibility: visible;
+        `}
 
     div {
         display: flex;
@@ -27,7 +29,7 @@ export const Menu = styled.div<MenuProps>`
         svg {
             margin-right: 10px;
         }
-        transition: color .2s;
+        transition: color 0.2s;
 
         &:hover {
             color: #333;
@@ -38,11 +40,21 @@ export const Menu = styled.div<MenuProps>`
         padding-top: 0;
     }
 
-    div:last-child {
+    & > div:last-child {
         padding-bottom: 0;
         border-bottom: none;
-    }
 
+        div {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        p {
+            margin-top: 5px;
+            background-color: white;
+            border: none;
+        }
+    }
 `;
 
 export const Container = styled.div`
@@ -51,5 +63,4 @@ export const Container = styled.div`
     }
     display: block;
     justify-content: center;
-
 `;

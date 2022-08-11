@@ -43,8 +43,19 @@ export const FormBody = styled.div`
     flex-direction: column;
     width: 100%;
     background-color: white;
+    padding: 30px 20px;
+    border-radius: 7px;
 
     & > div {
         display: flex;
     }
+    
+    div > div:first-child {
+        margin-right: 20px;
+    }
+
+    div:last-child {
+        margin-bottom: 0;
+    }
+
 `;

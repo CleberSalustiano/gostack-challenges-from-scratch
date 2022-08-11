@@ -51,7 +51,7 @@ const ProblemsPage: React.FC = () => {
                                 <td>{problem.delivery_id}</td>
                                 <td>{problem.description}</td>
                                 <td>
-                                    <Action typeAction="problems" />
+                                    <Action typeAction="problems" id=""/>
                                 </td>
                             </tr>
                         ))}

@@ -8,10 +8,12 @@ export const Container = styled.div`
         text-decoration: none;
         border: none;
         width: 100%;
+        font-size: 14px;
     }
 
     input::placeholder{
         color: #777;
+        font-size: 14px;
     }
 
     div {

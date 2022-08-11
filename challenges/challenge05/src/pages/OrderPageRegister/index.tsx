@@ -53,10 +53,10 @@ const OrderPageRegister: React.FC = () => {
                         </div>
 
                         <Input
-                            name="email"
+                            name="produto"
                             type="text"
-                            title="SEU E-MAIL"
-                            placeHolder="exemplo@email.com"
+                            title="Nome do Produto"
+                            placeHolder="Digite o produto"
                         />
                     </FormBody>
                 </Form>

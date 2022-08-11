@@ -76,7 +76,7 @@ const CourierPage: React.FC = () => {
                                         <td>{courier.name}</td>
                                         <td>{courier.email}</td>
                                         <td>
-                                            <Action typeAction="orders"></Action>
+                                            <Action id="" typeAction="couriers"></Action>
                                         </td>
                                     </tr>
                                 );

@@ -1,24 +1,52 @@
 import React, { HTMLAttributes, useCallback, useState } from "react";
 import { FiEdit2, FiEye, FiMoreHorizontal, FiTrash2 } from "react-icons/fi";
+import { DeletedProp } from "../../pages/OrderPage";
+import api from "../../service/api";
 import { Container, Menu } from "./style";
+
 
 interface ActionProps extends HTMLAttributes<HTMLDivElement> {
     typeAction: "orders" | "couriers" | "recipients" | "problems";
+    id: string;
+    setDeleted?: (arg0: DeletedProp) => void;
 }
 
 const Action: React.FC<ActionProps> = ({
-    typeAction
+    typeAction, id, setDeleted
 }) => {
 
     const [isOpen, setActionOpen] = useState(false);
 
+    const [isSure, setIsSure] = useState(false)
+
+    const token = localStorage.getItem("FastFeet:token");
+
     const handleOpen = useCallback(() => {
         setActionOpen(!isOpen);
+        if (isOpen === false) {
+            setIsSure(false)
+        }
     }, [isOpen]);
 
+    const handleAreYouSureRemove = useCallback(() => {
+        setIsSure(true)
+    }, [])
+
+    const handleRemove = useCallback(async () => {
+        await api.delete("/" + typeAction + "/" + id, {
+            headers: {
+                authorization: token as string,
+            },
+        });
+        setIsSure(false);
+        if (setDeleted instanceof Function){
+            setDeleted({isDeleted: true, idDeleted: id})
+        } 
+    }, [typeAction, id, token, setDeleted])
+
     return (
-        <Container onClick={handleOpen}>
-            <FiMoreHorizontal />
+        <Container>
+            <FiMoreHorizontal onClick={handleOpen} />
             <Menu isOpen={isOpen}>
                 {isOpen && typeAction === "orders" && (
                     <>
@@ -28,8 +56,8 @@ const Action: React.FC<ActionProps> = ({
                         <div>
                             <FiEdit2 className="edit" /> Editar
                         </div>
-                        <div>
-                            <FiTrash2 className="remove" /> Excluir
+                        <div onClick={handleAreYouSureRemove}>
+                            {isSure ? <div onClick={handleRemove}><FiTrash2 className="remove"  /> Tem certeza?</div>: <div><FiTrash2 className="remove" /> Excluir</div>}
                         </div>
                     </>
                 )}

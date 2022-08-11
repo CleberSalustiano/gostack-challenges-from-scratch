@@ -17,10 +17,21 @@ interface OrderProp {
     canceled_at: string;
 }
 
+export interface DeletedProp {
+    isDeleted: boolean;
+    idDeleted: string;
+}
+
 const OrderPage: React.FC = () => {
     const [orders, setOrders] = useState<OrderProp[]>();
 
+    const [deleted, setDeleted] = useState<DeletedProp>({
+        isDeleted: false,
+        idDeleted: "",
+    });
+
     const token = localStorage.getItem("FastFeet:token");
+
     useEffect(() => {
         const loadOrders = async () => {
             const { data } = await api.get("/orders", {
@@ -33,6 +44,15 @@ const OrderPage: React.FC = () => {
 
         loadOrders();
     }, [token]);
+
+    useEffect(() => {
+        if (deleted.isDeleted === true) {
+            const newOrders = orders?.filter(
+                (order) => order.id !== deleted.idDeleted,
+            );
+            setOrders(newOrders);
+        }
+    }, [deleted, orders]);
 
     return (
         <>
@@ -81,9 +101,19 @@ const OrderPage: React.FC = () => {
                                         </td>
                                         <td>{order.recipient.city}</td>
                                         <td>{order.recipient.state}</td>
-                                        <td><Status start_date={order.start_date} canceled_at={order.canceled_at} end_date={order.end_date} /></td>
                                         <td>
-                                            <Action typeAction="orders"></Action>
+                                            <Status
+                                                start_date={order.start_date}
+                                                canceled_at={order.canceled_at}
+                                                end_date={order.end_date}
+                                            />
+                                        </td>
+                                        <td>
+                                            <Action
+                                                typeAction="orders"
+                                                id={order.id}
+                                                setDeleted={setDeleted}
+                                            />
                                         </td>
                                     </tr>
                                 );

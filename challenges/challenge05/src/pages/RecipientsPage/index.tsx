@@ -67,7 +67,7 @@ const RecipientsPage: React.FC = () => {
                                         <td>{recipient.name}</td>
                                         <td>{recipient.street + ", " +  recipient.number +", " + recipient.city + " - " + recipient.state }</td>
                                         <td>
-                                            <Action typeAction="orders"></Action>
+                                            <Action typeAction="orders" id=""></Action>
                                         </td>
                                     </tr>
                                 );
