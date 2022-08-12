@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Container } from "../CourierPage/style";
 
 export const Tbody = styled.tbody`
     td:nth-child(3) {

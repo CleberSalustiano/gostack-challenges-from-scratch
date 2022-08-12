@@ -7,27 +7,34 @@ import Status from "../../components/Status";
 import { MainHeader, Main, Table, Tbody } from "./style";
 import ProfileImage from "../../components/ProfileImage";
 import api from "../../service/api";
+import NoteVisualization from "../../components/NoteVisualization";
 
-interface OrderProp {
-    recipient: { name: string; state: string; city: string };
+export interface OrderProp {
+    recipient: { name: string; state: string; city: string, cep: string, number:string };
     courier: { name: string; avatar_id: string };
     id: string;
+    signature_id: string;
     start_date: string;
     end_date: string;
     canceled_at: string;
 }
 
-export interface DeletedProp {
-    isDeleted: boolean;
-    idDeleted: string;
+export interface ActionDataProps {
+    isDataAction: boolean;
+    id: string;
 }
 
 const OrderPage: React.FC = () => {
     const [orders, setOrders] = useState<OrderProp[]>();
 
-    const [deleted, setDeleted] = useState<DeletedProp>({
-        isDeleted: false,
-        idDeleted: "",
+    const [deleted, setDeleted] = useState<ActionDataProps>({
+        isDataAction: false,
+        id: "",
+    });
+
+    const [isVisualizationVisible, setIsVisualizationVisible] = useState<ActionDataProps>({
+        isDataAction: false,
+        id: "",
     });
 
     const token = localStorage.getItem("FastFeet:token");
@@ -46,9 +53,9 @@ const OrderPage: React.FC = () => {
     }, [token]);
 
     useEffect(() => {
-        if (deleted.isDeleted === true) {
+        if (deleted.isDataAction === true) {
             const newOrders = orders?.filter(
-                (order) => order.id !== deleted.idDeleted,
+                (order) => order.id !== deleted.id,
             );
             setOrders(newOrders);
         }
@@ -58,6 +65,7 @@ const OrderPage: React.FC = () => {
         <>
             <Header bold="orders" />
             <Main>
+                {isVisualizationVisible.isDataAction && <NoteVisualization setVisible={setIsVisualizationVisible} order={(orders && orders.find(order => order.id === isVisualizationVisible.id))}/>}
                 <MainHeader>
                     <div>
                         <h2>Gerenciando encomendas</h2>
@@ -113,6 +121,7 @@ const OrderPage: React.FC = () => {
                                                 typeAction="orders"
                                                 id={order.id}
                                                 setDeleted={setDeleted}
+                                                setVisualizationVisible={setIsVisualizationVisible}
                                             />
                                         </td>
                                     </tr>
