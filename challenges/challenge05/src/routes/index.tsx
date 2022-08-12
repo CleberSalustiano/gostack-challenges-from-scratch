@@ -2,6 +2,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import CourierPage from "../pages/CourierPage";
+import RecipientsPageRegister from "../pages/RecipientsPageRegister";
 import OrderPage from "../pages/OrderPage";
 import OrderPageRegister from "../pages/OrderPageRegister";
 import ProblemsPage from "../pages/ProblemsPage";
@@ -33,6 +34,14 @@ const ApplicationRoutes: React.FC = () => (
             element={
                 <ProtectedRoute>
                     <CourierPage />
+                </ProtectedRoute>
+            }
+        />
+        <Route
+            path="/recipients/register"
+            element={
+                <ProtectedRoute>
+                    <RecipientsPageRegister />
                 </ProtectedRoute>
             }
         />
