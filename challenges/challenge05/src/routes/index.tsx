@@ -9,6 +9,7 @@ import ProblemsPage from "../pages/ProblemsPage";
 import RecipientsPage from "../pages/RecipientsPage";
 import SignInPage from "../pages/SignInPage";
 import ProtectedRoute from "./routes";
+import CourierPageRegister from "../pages/CourierPageRegister";
 
 const ApplicationRoutes: React.FC = () => (
     <Routes>
@@ -34,6 +35,14 @@ const ApplicationRoutes: React.FC = () => (
             element={
                 <ProtectedRoute>
                     <CourierPage />
+                </ProtectedRoute>
+            }
+        />
+        <Route
+            path="/couriers/register"
+            element={
+                <ProtectedRoute>
+                    <CourierPageRegister />
                 </ProtectedRoute>
             }
         />

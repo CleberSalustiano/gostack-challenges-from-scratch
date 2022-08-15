@@ -13,7 +13,6 @@ interface ProblemsProp {
 const ProblemsPage: React.FC = () => {
     const [problems, setProblems] = useState<ProblemsProp[]>();
 
-
     const token = localStorage.getItem("FastFeet:token");
     useEffect(() => {
         const loadProblems = async () => {
@@ -46,16 +45,16 @@ const ProblemsPage: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {problems && problems.map(problem => (
-                            <tr id={problem.id}>
-                                <td>{problem.delivery_id}</td>
-                                <td>{problem.description}</td>
-                                <td>
-                                    <Action typeAction="problems" id=""/>
-                                </td>
-                            </tr>
-                        ))}
-
+                        {problems &&
+                            problems.map((problem) => (
+                                <tr id={problem.id}>
+                                    <td>{problem.delivery_id}</td>
+                                    <td>{problem.description}</td>
+                                    <td>
+                                        <Action typeAction="problems" id="" />
+                                    </td>
+                                </tr>
+                            ))}
                     </tbody>
                 </Table>
             </Main>
