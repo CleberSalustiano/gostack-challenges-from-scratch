@@ -1,6 +1,7 @@
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import React, { useCallback, useRef } from "react";
+import Dropzone from "react-dropzone";
 import { FiCheck } from "react-icons/fi";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
@@ -35,8 +36,6 @@ const CourierPageRegister: React.FC = () => {
                         </div>
                     </FormHeader>
                     <FormBody>
-                        
-
                         <Input
                             name="produto"
                             type="text"
