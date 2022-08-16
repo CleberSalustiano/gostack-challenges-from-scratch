@@ -1,28 +1,59 @@
-import React, {useCallback} from 'react'
-import {useDropzone} from 'react-dropzone'
+/* eslint-disable @typescript-eslint/ban-types */
+import React, { InputHTMLAttributes, ReactNode } from "react";
 
-const Dropzone : React.FC = () => {
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file) => {
-      const reader = new FileReader()
+import Dropzone, { useDropzone } from "react-dropzone";
+import { DropContainer, UploadMessage } from "./style";
 
-      reader.onabort = () => console.log('file reading was aborted')
-      reader.onerror = () => console.log('file reading has failed')
-      reader.onload = () => {
-      // Do whatever you want with the file contents
-        const binaryStr = reader.result
-        console.log(binaryStr)
-      }
-      reader.readAsArrayBuffer(file)
-    })
-    
-  }, [])
-  const {getRootProps, getInputProps} = useDropzone({onDrop})
-
-  return (
-    <div {...getRootProps()}>
-      <input {...getInputProps()} />
-      <p>Drag 'n' drop some files here, or click to select files</p>
-    </div>
-  )
+interface UploadProps {
+    onUpload: Function;
+    children?: ReactNode;
 }
+
+const UploadFile: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
+    const renderDragMessage = (
+        isDragActive: boolean,
+        isDragRejest: boolean,
+    ): ReactNode => {
+        if (!isDragActive) {
+            return (
+                <UploadMessage>
+                    Selecione ou arraste o arquivo aqui.
+                </UploadMessage>
+            );
+        }
+
+        if (isDragRejest) {
+            return (
+                <UploadMessage type="error">
+                    Arquivo não suportado
+                </UploadMessage>
+            );
+        }
+
+        return (
+            <UploadMessage type="success">Solte o arquivo aqui</UploadMessage>
+        );
+    };
+
+    return (
+        <Dropzone accept={{"image/jpeg":[], "image/png":[]}} onDropAccepted={(files) => onUpload(files)}>
+            {({ acceptedFiles,
+                getRootProps,
+                getInputProps,
+                isDragActive,
+                isDragReject,
+            }): any => (
+                <DropContainer
+                    {...getRootProps()}
+                    isDragActive={isDragActive}
+                    isDragReject={isDragReject}
+                >
+                    <input {...getInputProps()} data-testid="upload" />
+                    {renderDragMessage(isDragActive, isDragReject)}
+                </DropContainer>
+            )}
+        </Dropzone>
+    );
+};
+
+export default UploadFile;
