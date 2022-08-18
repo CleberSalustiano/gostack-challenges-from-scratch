@@ -1,15 +1,28 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { InputHTMLAttributes, ReactNode } from "react";
-
-import Dropzone, { useDropzone } from "react-dropzone";
+import React, { ReactNode, useEffect, useRef } from "react";
+import imageDefault from "../../assets/imageDefault.png";
+import Dropzone from "react-dropzone";
 import { DropContainer, UploadMessage } from "./style";
+import { useField } from "@unform/core";
 
 interface UploadProps {
     onUpload: Function;
     children?: ReactNode;
+    name: string;
 }
 
-const UploadFile: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
+const UploadFile: React.FC<UploadProps> = ({ onUpload, name }: UploadProps) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const { fieldName, defaultValue, registerField } = useField(name);
+
+    useEffect(() => {
+        registerField({
+          name: fieldName,
+          ref: inputRef.current,
+          path: 'value',
+        });
+      }, [fieldName, registerField]);
+
     const renderDragMessage = (
         isDragActive: boolean,
         isDragRejest: boolean,
@@ -17,7 +30,8 @@ const UploadFile: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
         if (!isDragActive) {
             return (
                 <UploadMessage>
-                    Selecione ou arraste o arquivo aqui.
+                    <img src={imageDefault} alt="" />
+                    Adicionar Foto
                 </UploadMessage>
             );
         }
@@ -31,13 +45,20 @@ const UploadFile: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
         }
 
         return (
-            <UploadMessage type="success">Solte o arquivo aqui</UploadMessage>
+            <UploadMessage type="success">
+                <img src={imageDefault} alt="" />
+                Adicionar Foto
+            </UploadMessage>
         );
     };
 
     return (
-        <Dropzone accept={{"image/jpeg":[], "image/png":[]}} onDropAccepted={(files) => onUpload(files)}>
-            {({ acceptedFiles,
+        <Dropzone
+            accept={{ "image/jpeg": [], "image/png": [] }}
+            onDropAccepted={(files) => onUpload(files)}
+        >
+            {({
+                acceptedFiles,
                 getRootProps,
                 getInputProps,
                 isDragActive,
@@ -48,7 +69,7 @@ const UploadFile: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
                     isDragActive={isDragActive}
                     isDragReject={isDragReject}
                 >
-                    <input {...getInputProps()} data-testid="upload" />
+                    <input {...getInputProps()} data-testid="upload" ref={inputRef}/>
                     {renderDragMessage(isDragActive, isDragReject)}
                 </DropContainer>
             )}

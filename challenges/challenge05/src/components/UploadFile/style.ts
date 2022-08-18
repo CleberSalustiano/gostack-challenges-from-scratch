@@ -20,8 +20,12 @@ export const DropContainer = styled.div.attrs({
     className: "dropzone",
 })`
     border: 1.5px dashed #969cb3;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 
     transition: height 0.2s ease;
 
@@ -33,7 +37,7 @@ export const DropContainer = styled.div.attrs({
 `;
 
 const messageColors = {
-    default: "#5636D3",
+    default: "#aaa",
     error: "#e83f5b",
     success: "#12a454",
 };
@@ -43,9 +47,14 @@ export const UploadMessage = styled.p`
     font-size: 16px;
     line-height: 24px;
     padding: 48px 0;
-
+    font-weight: 500;
     color: ${({ type }: UploadProps) => messageColors[type || "default"]};
-
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
 `;

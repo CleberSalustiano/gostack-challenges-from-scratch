@@ -1,14 +1,15 @@
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FiCheck } from "react-icons/fi";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import UploadFile from "../../components/UploadFile";
 import { FormHeader, Main } from "../OrderPageRegister/style";
-import { FormBody } from "../RecipientsPageRegister/style";
+import { FormBody } from "./style";
 import filesize from "filesize";
+import api from "../../service/api";
 
 interface FileProps {
     file: File;
@@ -16,11 +17,26 @@ interface FileProps {
     readableSize: string;
 }
 
+interface registerCourierProps {
+    name: string;
+    email: string;
+    file: FileProps;
+}
+
 const CourierPageRegister: React.FC = () => {
     const [uploadedFiles, setUploadedFiles] = useState<FileProps[]>([]);
     const formRef = useRef<FormHandles>(null);
 
-    const handleSubmit = useCallback(() => {}, []);
+    const token = localStorage.getItem("FastFeet:token");
+
+    const handleSubmit = useCallback(async ({name, email, file} :registerCourierProps) => {
+        const onlyFile = file.file;
+        const { data } = await api.post("/couriers",{name, email, onlyFile} ,{
+            headers: {
+                authorization: token as string,
+            },
+        });
+    }, []);
 
     const submitFile = (files: File[]): void => {
         const filesWithProps: FileProps[] = files.map((file) => ({
@@ -53,23 +69,23 @@ const CourierPageRegister: React.FC = () => {
                         </div>
                     </FormHeader>
                     <FormBody>
-                        <UploadFile onUpload={submitFile}></UploadFile>
+                        <UploadFile name="file" onUpload={submitFile}></UploadFile>
                         {!!uploadedFiles.length &&
                             uploadedFiles.map((files) => {
-                                return <>{files.name}</>;
+                                return <span>{files.name}</span>;
                             })}
                         <Input
-                            name="produto"
+                            name="nome"
                             type="text"
-                            title="Nome do Produto"
-                            placeHolder="Digite o produto"
+                            title="Nome"
+                            placeHolder="Digite o seu nome"
                         />
 
                         <Input
-                            name="produto"
+                            name="email"
                             type="text"
-                            title="Nome do Produto"
-                            placeHolder="Digite o produto"
+                            title="Email"
+                            placeHolder="Digite o seu email"
                         />
                     </FormBody>
                 </Form>
